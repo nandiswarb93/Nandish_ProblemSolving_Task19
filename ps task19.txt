@@ -1,0 +1,67 @@
+//  1) Perfect times are: Time2
+// 2) Non Perfect times are: Time1, Time3, Time4
+// 3) Time delayed:
+// Time1: 26 min
+// Time3: 30 min
+// Time4: 15 min
+
+// 4)
+// Time1: 11:00
+// Time3: 03:00
+// Time4: 01:00
+
+var a = [
+  { Time1: "10:34" },
+  { Time2: "12:00" },
+  { Time3: "02:30" },
+  { Time4: "12:45" },
+];
+perfect = "";
+noperfect = "";
+timedelay = "";
+incre = "";
+incre1 = "";
+for (i in a) {
+  for (j in a[i]) {
+    arr = a[i][j];
+
+    temp = arr.split(":");
+
+    if (Number(temp[1]) == 0) {
+      perfect = j;
+    }
+    if (Number(temp[1]) > 0) {
+      noperfect = noperfect + j + " ";
+      delay = 60 - Number(temp[1]);
+      timedelay += j + ": " + delay + " min" + "\n";
+      incre = Number(temp[0]) + 1;
+
+      if (incre >= 13)
+        incre1 = incre1 + j + ":  " + (incre - 12) + ":00" + "\n";
+      else incre1 = incre1 + j + ": " + incre + ":00" + "\n";
+    }
+  }
+}
+console.log("Perfect times are : " + perfect);
+console.log("Non Perfect times are : " + noperfect);
+console.log("Time delayed : ");
+console.log(timedelay);
+console.log("Next Perfect time : ");
+console.log(incre1);
+
+
+
+o/p:
+
+
+Perfect times are : Time2
+Non Perfect times are : Time1 Time3 Time4 
+Time delayed : 
+Time1: 26 min
+Time3: 30 min
+Time4: 15 min
+
+Next Perfect time : 
+Time1: 11:00
+Time3: 3:00
+Time4:  1:00
